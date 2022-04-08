@@ -130,7 +130,8 @@
         </i>
       </a>
       <strong>Log In</strong>
-      <form>
+      <form method="POST" action="{{ route('login') }}">
+      @csrf
         <input type="email"placeholder="Example@gmail.com" name="email">
         <input type="password"placeholder="password" name="password">
         <input type="submit" value="Log IN">
@@ -149,7 +150,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                      
 
                         
 

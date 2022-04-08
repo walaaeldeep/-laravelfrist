@@ -115,20 +115,36 @@
         
         <p><b>  OR DO YOU PREFER WE CONTACT YOU?   </b></p>
         <fieldset >
-               <form method="POST" action="{{ route('register') }}">
-<label for="fname">First Name</label>
-    <br>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-  </br>
+    
+       <form method="POST" action="{{ route('register') }}">
+          @csrf
+  <div class="row mb-3">
+<label for="fname">{{ __('fName') }}</</label>
+
+   <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    
+                                 @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+  
+  
   </div>   
 
   
 <div>
-    <form action="/action_page.php">
-      <label for="Email">Email</label>
-      <br>
-      <input type="text" id="fname" name="Email" placeholder="EMAIL.." required >
-    </br>
+    
+      <label for="Email">{{ __('Email') }}</label>
+     
+       <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+     
+    
 
       
 
@@ -164,72 +180,42 @@
  </select>
  <div>
     <form>
-   
-      <label for="Password">Password</label>
+    <div class="row mb-3">
+      <label for="Password">{{ __('Password') }}</</label>
       <br>
-      <input type="password" id="Password" name="Password" placeholder="PASSWORD..">
-    </br>
+    
+    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                              @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
    
-    <div>
-        <form action="/action_page.php">
+    
+        
           <label for="phone">phone</label>
+    <input id="phone" type="phone" class="form-control @error('password') is-invalid @enderror" name="phone" required autocomplete="new-phone">
+
           <br>
-          <input type="text" id="phone" name="phone" placeholder="phone..">
+        
         </br>
         <br> 
 
     </br>
-    <a href= "">
-        <button   type="login" value="login">login</button>
-    </a>
+  
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+  
     
     
     
-</from>
-</fieldset>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-
-
-           
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                    
-
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        
-
-                  
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-     
-
-
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
+                  </from>
+                  </fieldset>
                         
                           
                     </form>
